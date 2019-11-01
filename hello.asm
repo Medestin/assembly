@@ -1,15 +1,15 @@
-section .text
-	global _start
+section .text ;declaring text section(segment), where the code is kept
+	global _start ;must have, tells the kernel where execution begins
 _start:
-	mov edx,len
-	mov ecx,msg
-	mov ebx,1
-	mov eax, 4
-	int 0x80
+	mov edx,len ;message length
+	mov ecx,msg ;message to write
+	mov ebx,1 ;file descriptor (stdout)
+	mov eax, 4 ;system call number (sys_write)
+	int 0x80 ;call kernel
 
-	mov eax,1
-	int 0x80
+	mov eax,1 ;system call number (sys_exit)
+	int 0x80 ;call kernel
 
-section .data
-msg db 'Goodbye World!', 0xa
-len equ $ - msg
+section .data ;section containing data, constants and whatnot
+msg db 'Goodbye World!', 0xa ;string to be printed
+len equ $ - msg ;length of the string
