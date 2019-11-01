@@ -1,0 +1,7 @@
+Using nasm:
+	To assemble the program, use:
+		'nasm -f elf [program_name].asm'
+	To link the object file and create executable file named the same, type:
+		'ld -m elf_i368 -s -o [program_name] [program_name].o
+	Then execute with simple:
+		'./[program_name]
